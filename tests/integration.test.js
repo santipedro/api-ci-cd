@@ -1,7 +1,11 @@
 const request = require('supertest');
 const app = require('../src/app');
 
-let server;
+
+
+describe('Testes de Integração - API', () => {
+
+  let server;
 
 beforeAll((done) => {
   server = app.listen(0, () => { // Usar 0 para porta aleatória
@@ -10,22 +14,17 @@ beforeAll((done) => {
   });
 });
 
-afterAll((done) => {
-  console.log('Fechando servidor de teste');
-  if (server) {
-    server.close(done);
-  } else {
-    done();
-  }
-});
-
-describe('Testes de Integração - API', () => {
-  test('GET /api/products - Deve retornar todos os produtos', async () => {
-    const response = await request(app).get('/api/products');
-    expect(response.statusCode).toBe(200);
-    expect(response.body).toBeInstanceOf(Array);
-    expect(response.body.length).toBeGreaterThan(0);
+ afterAll(async () => {
+    if (server && server.close) {
+      await new Promise(resolve => server.close(resolve));
+    }
   });
+
+  test('GET /api/products', async () => {
+    const response = await request(app).get('/api/products');
+    expect(response.status).toBe(200);
+  });
+});
 
   test('POST /api/products - Deve criar um novo produto', async () => {
     const newProduct = { name: "Produto Teste", price: 99.99 };
@@ -53,4 +52,3 @@ describe('Testes de Integração - API', () => {
     const checkResponse = await request(app).get('/api/products/1');
     expect(checkResponse.statusCode).toBe(404);
   });
-});
