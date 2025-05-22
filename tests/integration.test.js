@@ -1,6 +1,24 @@
 const request = require('supertest');
 const app = require('../src/app');
 
+let server;
+
+beforeAll((done) => {
+  server = app.listen(0, () => { // Usar 0 para porta aleatória
+    console.log(`Servidor de teste rodando na porta ${server.address().port}`);
+    done();
+  });
+});
+
+afterAll((done) => {
+  console.log('Fechando servidor de teste');
+  if (server) {
+    server.close(done);
+  } else {
+    done();
+  }
+});
+
 describe('Testes de Integração - API', () => {
   test('GET /api/products - Deve retornar todos os produtos', async () => {
     const response = await request(app).get('/api/products');

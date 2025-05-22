@@ -27,4 +27,8 @@ describe('Testes Unitários - Controllers', () => {
     expect(addedProduct.id).toBe(3);
     expect(addedProduct.name).toBe(newProduct.name);
   });
-});     
+}); 
+
+afterAll(() => {
+  console.log('Testes unitários concluídos');
+});

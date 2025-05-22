@@ -5,9 +5,9 @@ const routes = require('./routes');
 app.use(express.json());
 app.use('/api', routes);
 
-const PORT = process.env.PORT || 5500;
-app.listen(PORT, () => {
-  console.log(`Servidor rodando na porta ${PORT}`);
+const server = app.listen(process.env.PORT || 3000, () => {
+  console.log(`Servidor rodando na porta ${process.env.PORT || 3000}`);
 });
 
-module.exports = app; // Exporta para testes
+// Exporte tanto app quanto server para testes
+module.exports = { app, server };
