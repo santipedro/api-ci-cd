@@ -6,7 +6,9 @@
   "scripts": {
     "start": "node src/app.js",
     "dev": "nodemon src/app.js",
-    "test": "jest",
+    "test": "jest --detectOpenHandles --forceExit",
+    "test:watch": "jest --watch",
+    "test:debug": "jest --detectOpenHandles --verbose",
     "test:unit": "jest tests/unit.test.js",
     "test:integration": "jest tests/integration.test.js"
   },
