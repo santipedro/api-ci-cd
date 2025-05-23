@@ -1,5 +1,4 @@
-API de Demonstração CI/CD 🚀
-(CI/CD Demonstration API)
+API de Demonstração CI/CD (CI/CD Demonstration API)
 
 <br><div align="center"> <img src="https://img.shields.io/badge/Node.js-18-green?logo=node.js" alt="Node.js"> <img src="https://img.shields.io/badge/Express-4.18-brightgreen?logo=express" alt="Express"> <img src="https://img.shields.io/badge/Jest-29-blue?logo=jest" alt="Jest"> <img src="https://img.shields.io/badge/GitHub_Actions-100%25-success?logo=github-actions" alt="GitHub Actions"> </div><br>
 
@@ -95,5 +94,3 @@ Serve as a educational material in a class.
 
 📄 Licença | License
 MIT © Pedro Santiago
-
-<div align="center"> ✨ <strong>Perfeito para workshops e aulas de engenharia de software!</strong> ✨ ✨ <strong>Perfect for software engineering workshops and classes!</strong> ✨ </div>
