@@ -33,7 +33,7 @@ EN:
 🛠️ Como Usar | How to Use
 
 
-Pré-requisitos | Prerequisites
+Pré-requisitos | Prerequisites:
 Node.js 18+
 npm 9+
 
