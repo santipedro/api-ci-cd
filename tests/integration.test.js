@@ -1,30 +1,23 @@
 const request = require('supertest');
 const app = require('../src/app');
+const { startServer, stopServer } = require('./test-sever');
 
+let server;
 
+beforeAll(async () => {
+  server = await startServer(app);
+});
+
+afterAll(async () => {
+  await stopServer(server);
+});
 
 describe('Testes de Integração - API', () => {
-
-  let server;
-
-beforeAll((done) => {
-  server = app.listen(0, () => { // Usar 0 para porta aleatória
-    console.log(`Servidor de teste rodando na porta ${server.address().port}`);
-    done();
-  });
-});
-
- afterAll(async () => {
-    if (server && server.close) {
-      await new Promise(resolve => server.close(resolve));
-    }
-  });
-
-  test('GET /api/products', async () => {
+  test('GET /api/products - Deve retornar todos os produtos', async () => {
     const response = await request(app).get('/api/products');
-    expect(response.status).toBe(200);
+    expect(response.statusCode).toBe(200);
+    expect(response.body).toBeInstanceOf(Array);
   });
-});
 
   test('POST /api/products - Deve criar um novo produto', async () => {
     const newProduct = { name: "Produto Teste", price: 99.99 };
@@ -37,7 +30,7 @@ beforeAll((done) => {
     expect(response.body.name).toBe(newProduct.name);
   });
 
-  test('GET /api/products/:id - Deve retornar um produto específico', async () => {
+    test('GET /api/products/:id - Deve retornar um produto específico', async () => {
     const response = await request(app).get('/api/products/1');
     expect(response.statusCode).toBe(200);
     expect(response.body).toHaveProperty('id', 1);
@@ -52,3 +45,5 @@ beforeAll((done) => {
     const checkResponse = await request(app).get('/api/products/1');
     expect(checkResponse.statusCode).toBe(404);
   });
+});
+

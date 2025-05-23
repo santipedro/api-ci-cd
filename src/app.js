@@ -11,10 +11,4 @@ const startServer = () => {
   });
 };
 
-// Exporte tanto app quanto server para testes
-module.exports = { 
-  app,
-  startServer,
-  // Para ambientes de teste, exportamos sem iniciar o servidor
-  server: process.env.NODE_ENV === 'test' ? null : startServer()
-};
+module.exports = app;
