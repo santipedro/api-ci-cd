@@ -39,8 +39,8 @@ npm 9+
 
 Instalação | Installation
 bash
-git clone https://github.com/seu-usuario/api-ci-cd-demo.git  
-cd api-ci-cd-demo  
+git clone https://github.com/santipedro/api-ci-cd.git  
+cd api-ci-cd
 npm install  
 Executando | Running
 bash
