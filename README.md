@@ -31,9 +31,10 @@ EN:
 ✅ Classroom/demo ready for DevOps
 
 🛠️ Como Usar | How to Use
+
+
 Pré-requisitos | Prerequisites
 Node.js 18+
-
 npm 9+
 
 Instalação | Installation
